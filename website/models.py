@@ -1,40 +1,22 @@
-from flask_login import UserMixin
+# class for the user's account
+class Account:
+  def __init__(self, id, name, balance):
+    self.id = id
+    self.name = name
+    self.balance = balance
 
-from . import db
+# class for transactions so that they can be stored and the such
+class Transactions:
+  def __init__(self, id, account_id, amount, timestamp):
+    self.id = id
+    self.account_id = account_id
+    self.amount = amount
+    self.timestamp = timestamp
 
-
-class User(db.Model, UserMixin):
-  id = db.Column(db.Integer, primary_key=True)
-  email = db.Column(db.String(150), unique=True)
-  password = db.Column(db.String(150))
-  first_name = db.Column(db.String(150))
-  first_name = db.column(db.String(150))
-
-  def __init__(self, email, first_name, password):
-    self.email = email
-    self.first_name = first_name
+# class for the user
+class User:
+  def __init__(self, id, username, password):
+    self.id = id
+    self.username = username
     self.password = password
-
-class Transaction(db.Model):
-  id = db.Column(db.Integer, primary_key=True)
-  amount = db.Column(db.Float)
-  date = db.Column(db.DateTime)
-  description = db.Column(db.String(500))
-  category = db.Column(db.String(50))
-  user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-class Account(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    balance = db.Column(db.Float, default=0.0)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-    def deposit_funds(self, amount):
-        self.balance += amount
-        db.session.commit()
-
-    def withdraw_funds(self, amount):
-        if self.balance >= amount:
-            self.balance -= amount
-            db.session.commit()
-        else:
-            raise ValueError('Insufficient funds')
+    

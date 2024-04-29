@@ -34,6 +34,8 @@
     .dropdown-item:hover {
       color: grey;
     }
+
+    
   </style>
 </head>
 
@@ -62,7 +64,30 @@
           </div>
         </div>
   </nav>
-
+  <!--I tried to make a container to check balance -->
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Check Balance</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Account Number</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ account_number }}</td>
+              <td>{{ balance }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>  
+  
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
